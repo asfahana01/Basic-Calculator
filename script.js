@@ -3,11 +3,18 @@ const inputBtns = document.querySelectorAll("buttons");
 const clearBtn = document.getElementById("clear-btn");
 
 let firstValue = 0;
+let awaitingNextValue = false;
 
 function addNumberValue(number){
-    const displayValue = calculatorDisplay.textContent;
+    if(awaitingNextValue){
+        calculatorDisplay.textContent = number;
+        awaitingNextValue = false;
+    }
+    else{
+         const displayValue = calculatorDisplay.textContent;
     calculatorDisplay.textContent = 
        displayValue === "0" ? number : displayValue + number;
+    }
 }
 
 inputBtns.forEach((inputBtns)=>{
