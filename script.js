@@ -36,7 +36,7 @@ function useOperator(operator) {
   const currentValue = Number(calculatorDisplay.textContent);
   // Prevent multiple operators
   // Show console.log() that multiple operators are being added
-  // Also assumes if the user did not added another opertor and straghtaway a new value was added new value will be assigned to the display assuming a NEW CALCULATION FROM BEGINNING
+  // Also assumes if the user did not added another opertor and straightaway a new value was added new value will be assigned to the display assuming a NEW CALCULATION FROM BEGINNING
   if (operatorValue && awaitingNextValue) {
     operatorValue = operator;
     return;
@@ -53,13 +53,40 @@ function useOperator(operator) {
   awaitingNextValue = true;
   operatorValue = operator;
 }
+function addDecimal() {
+  // If operator pressed, don't add decimal
+  if (awaitingNextValue) return;
+  // If no decimal, add one
+  if (!calculatorDisplay.textContent.includes(".")) {
+    calculatorDisplay.textContent = `${calculatorDisplay.textContent}.`;
+  }
+}
 
 // Add Event Listeners for numbers, operators, decimal
 // Add event listeners one at a time
 inputBtns.forEach((inputBtn) => {
   if (inputBtn.classList.length === 0) {
     inputBtn.addEventListener("click", () => addNumberValue(inputBtn.value));
-  } else if (inputBtn.classList.contains("operator")) {
+
+  } else if (
+    inputBtn.classList.contains("operator") ||
+    inputBtn.classList.contains("equal-sign-operator")
+  ) {
     inputBtn.addEventListener("click", () => useOperator(inputBtn.value));
+
+  } else if (inputBtn.classList.contains("decimal")) {
+    inputBtn.addEventListener("click", () => addDecimal());
   }
 });
+
+
+// Reset all values, display
+function resetAll() {
+  firstValue = 0;
+  operatorValue = "";
+  awaitingNextValue = false;
+  calculatorDisplay.textContent = "0";
+}
+
+// Event Listener
+clearBtn.addEventListener("click", resetAll);
