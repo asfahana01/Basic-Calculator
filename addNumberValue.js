@@ -3,7 +3,7 @@ import { getAwaitingNextValue , setAwaitingNextValue } from "./values";
 
 function addNumberValue(number) {
   // Replace current display value if first value is entered
-  if (getAwaitingNextValue) {
+  if (getAwaitingNextValue()) {
     calculatorDisplay.textContent = number;
     setAwaitingNextValue(false);
   } else {
@@ -14,3 +14,4 @@ function addNumberValue(number) {
   }
 }
 
+export default addNumberValue;
