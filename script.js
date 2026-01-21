@@ -1,6 +1,6 @@
-import { inputBtns, clearBtn } from "./selectors";
+import { inputBtns, clearBtn } from "./selectors.js";
 import addDecimal from "./addDecimal.js";
-import addNumberValue from "./addNumberValue";
+import addNumberValue from "./addNumberValue.js";
 import useOperator from "./useOperator.js";
 import { resetAll } from "./values.js";
 
