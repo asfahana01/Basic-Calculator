@@ -1,4 +1,4 @@
-import {getAwaitingNextvalue , 
+import {getAwaitingNextValue , 
     getFirstValue,
     getOperatorValue,
     setAwaitingNextValue,
@@ -7,7 +7,7 @@ import {getAwaitingNextvalue ,
 } from "./values.js";
 
 import {calculatorDisplay} from "./selectors.js";
-import calculate from "./calculate.js";
+import calculate from "./calculator.js";
 
 
 function useOperator(operator) {
@@ -32,7 +32,7 @@ function useOperator(operator) {
   }
   // Ready for next value, store operator
   setAwaitingNextValue(true);
-  setOeratorValue(operator);
+  setOperatorValue(operator);
 }
 
 export default useOperator;
