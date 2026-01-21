@@ -1,5 +1,5 @@
-import { getAwaitingNextValue } from "./values";
-import { calculatorDisplay } from "./selectors";
+import { getAwaitingNextValue } from "./values.js";
+import { calculatorDisplay } from "./selectors.js";
 
 function addDecimal() {
   // If operator pressed, don't add decimal
